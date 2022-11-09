@@ -2,8 +2,8 @@ package cn.codingguide.springframework.test;
 
 import org.junit.Test;
 
-import cn.codingguide.springframework.BeanDefinition;
-import cn.codingguide.springframework.BeanFactory;
+import cn.codingguide.springframework.beans.factory.config.BeanDefinition;
+import cn.codingguide.springframework.beans.factory.support.DefaultListableBeanFactory;
 import cn.codingguide.springframework.test.bean.UserService;
 
 /**
@@ -14,16 +14,21 @@ public class BeanFactoryTest {
 
     @Test
     public void testBeanFactory() {
-        // 1.初始化BeanFactory
-        BeanFactory beanFactory = new BeanFactory();
+        // 1.初始化 BeanFactory 接口
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
-        // 2.注册Bean对象
-        BeanDefinition beanDefinition = new BeanDefinition(new UserService());
+        // 2.注册 Bean 对象
+        BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
         beanFactory.registerBeanDefinition("userService", beanDefinition);
 
-        // 3.获取Bean对象
+        // 3.获取 Bean 对象
         UserService userService = (UserService) beanFactory.getBean("userService");
         userService.queryUserInfo();
+        System.out.println(userService);
+
+        UserService userService1 = (UserService) beanFactory.getBean("userService");
+        userService1.queryUserInfo();
+        System.out.println(userService1);
     }
 
 }
