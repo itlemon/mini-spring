@@ -22,12 +22,14 @@ public class BeanFactoryTest {
         beanFactory.registerBeanDefinition("userService", beanDefinition);
 
         // 3.获取 Bean 对象
-        UserService userService = (UserService) beanFactory.getBean("userService");
+        UserService userService = (UserService) beanFactory.getBean("userService", "itlemon");
         userService.queryUserInfo();
+        userService.queryUsername();
         System.out.println(userService);
 
-        UserService userService1 = (UserService) beanFactory.getBean("userService");
+        UserService userService1 = (UserService) beanFactory.getBean("userService", "itlemon1");
         userService1.queryUserInfo();
+        userService1.queryUsername();
         System.out.println(userService1);
     }
 

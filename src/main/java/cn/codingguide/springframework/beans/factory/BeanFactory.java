@@ -15,8 +15,18 @@ public interface BeanFactory {
      *
      * @param name beanName
      * @return 实例化的Bean对象
-     * @throws BeansException 不能获取Bean对象，则抛出异常
+     * @throws BeansException Capable
      */
     Object getBean(String name) throws BeansException;
+
+    /**
+     * 获取带有入参的Bean实例对象
+     *
+     * @param name beanName
+     * @param args 入参参数
+     * @return 实例化的Bean对象
+     * @throws BeansException Capable
+     */
+    Object getBean(String name, Object... args) throws BeansException;
 
 }
