@@ -6,24 +6,35 @@ package cn.codingguide.springframework.test.bean;
  */
 public class UserService {
 
-    private final String name;
+    private String uid;
 
-    public UserService(String name) {
-        this.name = name;
-    }
+    private UserDao userDao;
 
     public void queryUserInfo() {
-        System.out.println("查询用户信息");
+        System.out.println("查询用户信息：" + userDao.queryUsername(uid));
     }
 
-    public void queryUsername() {
-        System.out.println(name);
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
     public String toString() {
         return "UserService{" +
-                "name='" + name + '\'' +
+                "uid='" + uid + '\'' +
+                ", userDao=" + userDao +
                 '}';
     }
 }
